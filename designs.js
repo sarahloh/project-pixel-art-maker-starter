@@ -1,42 +1,49 @@
 $(document).ready(function () {
 
+const canvas = $('#pixel_canvas');
+const gridForm = $('#size_picker');
+
 /**
  * @description Creates a new canvas
- * @param {number} width
  * @param {number} height
+ * @param {number} wodth
  */
-function makeGrid(rows, cols) {
-    console.log(`rows: ${rows}, columns: ${cols}`);
+function makeGrid(height, width) {
 
-    const canvas = $('#pixel_canvas');
-
-    // clear previous canvas
-    canvas.empty();
+    if (canvas.is(':empty')) {
+        // change button to 'Reset' after first grid created
+        console.log('First canvas');
+        $('input[type=submit]').val("Reset");
+    } else {
+        // clear canvas
+        canvas.empty();
+    }
 
     // add rows and columns to table
-    for (let row = 0; row < rows; row++) {
+    for (let row = 0; row < height; row++) {
         canvas.append("<tr></tr>");
     }
-    for (let col = 0; col < cols; col++) {
+    for (let col = 0; col < width; col++) {
         $('tr').append("<td></td>");
     }
 }
 
 // Event listener - grid size submitted
-$('#size_picker').submit(function(e) {
+gridForm.submit(function(e) {
+    let height = $('#input_height').val();
+    let width = $('#input_width').val();
+
     // prevent form submit from reloading page
     e.preventDefault();
-
-    const height = $('#input_height').val();
-    const width = $('#input_width').val();
 
     makeGrid(height, width);
 });
 
 // Event listener - canvas clicked
-$('#pixel_canvas').on('click', 'td', function(e) {
-    const cell = $(e.target);
-    cell.css('background-color', $('#color_picker').val());
+canvas.on('click', 'td', function(e) {
+    let cell = $(e.target);
+    let currentColor = $('#color_picker').val();
+    cell.css('background-color', currentColor);
 });
 
 });
