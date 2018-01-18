@@ -1,19 +1,69 @@
+* {
+    box-sizing: border-box;
+}
 body {
     text-align: center;
+    font-family: 'Roboto', sans-serif;
+    background-color: #454140;
+    color: floralwhite;
 }
 
 h1 {
-    font-family: Monoton;
+    width: 92%;
+    font-family: Monoton, cursive;
     font-size: 70px;
-    margin: 0.2em;
+    margin: 0.2em 4%;
 }
 
 h2 {
+    font-size: 20px;
     margin: 1em 0 0.25em;
 }
 
-h2:first-of-type {
-    margin-top: 0.5em;
+.border {
+    border: 3px double #bd5734;
+    border-radius: 10px;
+}
+
+.selection, .canvas {
+    height: 500px;
+}
+
+.selection {
+    width: 26%;
+    float: left;
+    padding: 0px 30px;
+    margin-left: 4%;
+}
+
+.canvas {
+    width: 64%;
+    float: right;
+    margin-left: 2%;
+    margin-right: 4%;
+}
+
+input[type=number] {
+    width: 3em;
+    font-size: 1em;
+}
+
+input[type=submit] {
+    font-family: 'Monoton', cursive;
+    font-size: 1.5em;
+    width: 6em;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 20px 0px;
+    background-color: #fa6338;
+}
+
+input[type=submit]:hover, td, hr {
+    background-color: floralwhite;
+}
+
+#color_picker {
+    margin: 1em 0;
 }
 
 table,
@@ -25,6 +75,7 @@ td {
 table {
     border-collapse: collapse;
     margin: 0 auto;
+    color: black;
 }
 
 tr {
@@ -35,6 +86,6 @@ td {
     width: 20px;
 }
 
-input[type=number] {
-    width: 6em;
+.instructions {
+    display: none;
 }
