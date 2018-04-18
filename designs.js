@@ -10,11 +10,10 @@ let isDown = false;
  * @param {number} width
  */
 function makeGrid(height, width) {
-
+    let gridButton = $('input[type=submit]');
     // Check if first canvas created, otherwise clear existing one
     if (canvas.is(':empty')) {
         // Change button to 'Reset' after first grid created
-        let gridButton = $('input[type=submit]');
         gridButton.val("Reset");
 
         // Show instructions paragraphs
@@ -36,7 +35,7 @@ function makeGrid(height, width) {
 }
 
 // Event listener - grid size submitted
-gridForm.submit(function(e) {
+gridForm.submit(function (e) {
     let height = $('#input_height').val();
     let width = $('#input_width').val();
 
@@ -55,13 +54,16 @@ $(document)
     .mouseup(function () {
         isDown = false;
     }
-);
+    );
 
-// Event listener - canvas clicked or moved with mouse down
-canvas.on('click mousemove', 'td', function (e) {
+// Event listener - canvas click, move with mouse down or double click
+canvas.on('click mousemove dblclick', 'td', function (e) {
+    let cell = $(e.target);
     if (e.type == "click" || isDown) {
-        let cell = $(e.target);
-        let currentColor = $('#color_picker').val();
+        let currentColor = $('#color_picker').css('background-color');
         cell.css('background-color', currentColor);
+    }
+    if (e.type == 'dblclick') {
+        cell.css('background-color', 'floralwhite');
     }
 });

@@ -64,6 +64,7 @@ input[type=submit]:hover, td, hr {
 
 #color_picker {
     margin: 1em 0;
+    width: 6em;
 }
 
 table,
